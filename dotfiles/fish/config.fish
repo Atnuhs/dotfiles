@@ -1,6 +1,13 @@
 set -x GOPATH $HOME/dev
-set -x PATH $PATH $GOPATH/bin
+fish_add_path $GOPATH/bin
+
 set -g theme_display_git_master_branch yes
+
+if type -q exa
+    alias ls 'exa --icons --git'
+    alias la "ls -a"
+    alias lla "ll -a"
+end
 
 function fish_user_key_bindings
   bind \c] peco_select_ghq      # Ctrl-]
@@ -35,9 +42,13 @@ function peco_select_history
 end
 
 alias vim=nvim
-alias ls='exa --icons --git'
+alias ga="git add"
+alias gb="git branch"
+alias gbd="git branch -d"
+alias gcm="git commit -m"
+alias gca="git commit --amend"
+alias gc="git checkout"
+alias gcb="git checkout -b"
 
 fish_user_key_bindings
-
-fish_add_path $HOME/.cargo/bin
 

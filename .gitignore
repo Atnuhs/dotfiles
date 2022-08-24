@@ -1,0 +1,4 @@
+# fish
+/dotfiles/fish/*
+!/dotfiles/fish/config.fish
+
