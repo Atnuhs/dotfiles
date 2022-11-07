@@ -13,15 +13,12 @@ ts.setup {
     ensure_installed = {
         "bash",
         "fish",
-        "lua",
-        "cmake",
-        "toml",
         "json",
         "yaml",
         "css",
         "html",
+        "lua",
         "javascript",
-        "tsx",
         "fortran",
         "go"
     },

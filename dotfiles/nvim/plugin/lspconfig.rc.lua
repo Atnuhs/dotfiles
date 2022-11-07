@@ -58,7 +58,11 @@ nvim_lsp.eslint.setup {
     cmd = { "vscode-eslint-language-server", "--stdio" }
 }
 
-nvim_lsp.gopls.setup({
-})
-nvim_lsp.fortls.setup({
-})
+nvim_lsp.fortls.setup {
+}
+
+nvim_lsp.gopls.setup {
+}
+
+nvim_lsp.bashls.setup {
+}
