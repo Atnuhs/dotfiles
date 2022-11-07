@@ -1,5 +1,7 @@
 set -x GOPATH $HOME/dev
 fish_add_path $GOPATH/bin
+fish_add_path /home/linuxbrew/.linuxbrew/bin
+fish_add_path /home/linuxbrew/.linuxbrew/sbin
 
 set -g theme_display_git_master_branch yes
 
