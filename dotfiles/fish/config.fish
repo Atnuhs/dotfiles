@@ -2,6 +2,7 @@ set -x GOPATH $HOME/dev
 fish_add_path $GOPATH/bin
 fish_add_path /home/linuxbrew/.linuxbrew/bin
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
+fish_add_path /$HOME/.cargo/bin
 
 set -g theme_display_git_master_branch yes
 
