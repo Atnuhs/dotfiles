@@ -1,13 +1,13 @@
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 
-require("nvim-lsp-installer").setup({
+require("mason").setup({
     automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
     ui = {
         icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
         }
     }
 })
@@ -34,35 +34,30 @@ nvim_lsp.tsserver.setup {
 
 -- Lua Configuration
 
-nvim_lsp.sumneko_lua.setup {
-    on_attach = on_attach,
+nvim_lsp.lua_ls.setup {
     settings = {
         Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
             diagnostics = {
                 -- Get the language server tot recognize the 'vim' global
-                globals = { 'vim' }
+                globals = { 'vim' },
             },
-
             workspace = {
                 -- Mak the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file("", true),
                 checkThirdParty = false
-            }
+            },
+            telemetry = {
+                enable = false
+            },
         }
-    }
+    },
+    on_attach = on_attach,
 }
 
--- eslint Configuration
-
-nvim_lsp.eslint.setup {
-    cmd = { "vscode-eslint-language-server", "--stdio" }
-}
-
-nvim_lsp.fortls.setup {
-}
-
-nvim_lsp.gopls.setup {
-}
-
-nvim_lsp.bashls.setup {
-}
+nvim_lsp.gopls.setup({
+})
+nvim_lsp.fortls.setup({
+})

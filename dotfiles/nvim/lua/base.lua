@@ -9,7 +9,6 @@ vim.wo.number = true
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.hlsearch = true
-vim.opt.clipboard = "unnamedplus"
 vim.opt.backup = false
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1

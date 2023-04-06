@@ -20,7 +20,9 @@ ts.setup {
         "lua",
         "javascript",
         "fortran",
-        "go"
+        "go",
+        "markdown",
+        "markdown_inline"
     },
     autotag = {
         enable = true,
