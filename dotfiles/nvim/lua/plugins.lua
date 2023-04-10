@@ -14,38 +14,47 @@ packer.startup(function(use)
         requires = { 'tjdevries/colorbuddy.nvim' }
     }
     use 'hoob3rt/lualine.nvim' -- Status line
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
-    use {
-        'glepnir/lspsaga.nvim',
-        opt = true,
-        branch = main,
-        event = "LspAttach",
-        requires = {
-            {"nvim-tree/nvim-web-devicons"},
-            {"nvim-treesitter/nvim-treesitter"}
-        }
-    }
-    use 'L3MON4D3/LuaSnip' -- Snipet
-    use 'neovim/nvim-lspconfig' -- LSP config
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use 'jose-elias-alvarez/null-ls.nvim'
-    use 'MunifTanjim/prettier.nvim'
+    use 'nvim-lua/plenary.nvim'
     use 'onsails/lspkind-nvim'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/nvim-cmp'
-    use 'windwp/nvim-autopairs'
-    use 'windwp/nvim-ts-autotag'
-    use 'nvim-lua/plenary.nvim'
+    use 'neovim/nvim-lspconfig' -- LSP config
+    use 'jose-elias-alvarez/null-ls.nvim'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+
+    use {
+        'glepnir/lspsaga.nvim',
+        opt = true,
+        commit="e39c210",
+        event = "LspAttach",
+        requires = {
+            {"nvim-tree/nvim-web-devicons"},
+        }
+    }
+    use 'L3MON4D3/LuaSnip' -- Snipet
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
-
-    use 'akinsho/nvim-bufferline.lua'
+    use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
+    use {
+        'numToStr/Comment.nvim',
+        requires = {
+        {'JoosepAlviste/nvim-ts-context-commentstring'}
+        }
+    }
     use 'norcalli/nvim-colorizer.lua'
+    use 'folke/zen-mode.nvim'
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+    use 'akinsho/nvim-bufferline.lua'
 
     use 'lewis6991/gitsigns.nvim'
     use 'dinhhuy258/git.nvim'
