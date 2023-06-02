@@ -45,6 +45,7 @@ function peco_select_history
 end
 
 alias vim=nvim
+alias ide=~/ide
 alias ga="git add"
 alias gb="git branch"
 alias gbd="git branch -d"
