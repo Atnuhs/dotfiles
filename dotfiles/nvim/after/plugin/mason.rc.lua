@@ -14,7 +14,6 @@ mason.setup({
 })
 
 lspconfig.setup {
-    ensure_installed = {"lua_ls", "gopls", "tsserver"},
-    automatic_installation = true
+    ensure_installed = {"lua_ls", "gopls", "golangci_lint_ls", "tsserver"},
 }
 

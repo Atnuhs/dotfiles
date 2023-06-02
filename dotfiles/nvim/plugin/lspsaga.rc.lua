@@ -1,17 +1,3 @@
-local status, saga = pcall(require, "lspsaga")
-if (not status) then return end
-
-saga.setup({
-    ui = {
-        winblend = 10,
-        border = 'rounded',
-        colors = {
-            normal_bg = "#002b36"
-        }
-    }
-})
-
-local diagnostic = require("lspsaga.diagnostic")
 local keymap = vim.keymap.set
 
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")

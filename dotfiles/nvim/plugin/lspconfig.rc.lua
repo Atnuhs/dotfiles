@@ -2,9 +2,10 @@ vim.lsp.set_log_level("debug")
 
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
-
 local protocol = require('vim.lsp.protocol')
+local util = require('lspconfig/util')
 local augroup_format = vim.api.nvim_create_augroup("Format", {clear = true})
+
 local enable_format_on_save = function(_, bufnr)
     vim.api.nvim_clear_autocmds({group = augroup_format, buffer = bufnr})
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -21,10 +22,9 @@ local on_attach = function(client, bufnr)
 
     local opts = {noremmap = true, silent = true}
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- TypeScript Configuration
 
@@ -32,13 +32,13 @@ nvim_lsp.tsserver.setup {
     on_attach = on_attach,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" },
-    capabilities = capabilities,
+    -- capabilities = capabilities,
 }
 
 -- Lua Configuration
 
 nvim_lsp.lua_ls.setup {
-    capabilities = capabilities,
+    -- capabilities = capabilities,
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
         enable_format_on_save(client, bufnr)
@@ -65,11 +65,17 @@ nvim_lsp.lua_ls.setup {
 }
 
 nvim_lsp.gopls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        enable_format_on_save(client, bufnr)
+    end,
+    cmd = {"gopls"},
+    filetypes = {"go", "gomod", "gowork", "gotmpl"},
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    -- capabilities = capabilities,
 })
 
 nvim_lsp.fortls.setup({
     on_attach = on_attach,
-    capabilities = capabilities,
+    -- capabilities = capabilities,
 })
