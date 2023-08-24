@@ -48,11 +48,12 @@ alias vim=nvim
 alias ide=~/ide
 alias ga="git add"
 alias gb="git branch"
+alias gd="git diff"
 alias gbd="git branch -d"
 alias gcm="git commit -m"
 alias gca="git commit --amend"
-alias gc="git checkout"
-alias gcb="git checkout -b"
+alias gst="git status"
+alias gsw="git switch"
 
 fish_user_key_bindings
 
