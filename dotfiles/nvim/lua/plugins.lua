@@ -1,28 +1,26 @@
-local status, packer = pcall(require, 'packer')
+local status, lazy = pcall(require, 'lazy')
 if (not status) then
-    print("Packer is not installed")
+    print("lazy is not installed")
     return
 end
 
+vim.g.mapleader = " "
 
-vim.cmd.packadd "packer.nvim"
-vim.cmd.colorscheme "catppuccin"
-
-packer.startup(function(use)
-    use 'wbthomason/packer.nvim'
-    use 'hoob3rt/lualine.nvim' -- Status line
-    use 'nvim-lua/plenary.nvim'
-    use 'onsails/lspkind-nvim'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/nvim-cmp'
-    use 'neovim/nvim-lspconfig' -- LSP config
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use {
+lazy.setup({
+    'wbthomason/packer.nvim',
+    'hoob3rt/lualine.nvim', -- Status line
+    'nvim-lua/plenary.nvim',
+    'onsails/lspkind-nvim',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/nvim-cmp',
+    'neovim/nvim-lspconfig', -- LSP config
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    {
         'jose-elias-alvarez/null-ls.nvim',
-    }
-    use {
+    },
+    {
         'glepnir/lspsaga.nvim',
         branch = "main",
         event = "LspAttach",
@@ -40,40 +38,33 @@ packer.startup(function(use)
         requires = {
             { "nvim-tree/nvim-web-devicons" },
         }
-    }
-    use 'L3MON4D3/LuaSnip' -- Snipet
-    use {
+    },
+    'L3MON4D3/LuaSnip', -- Snipet
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
-    use 'nvim-telescope/telescope.nvim'
-    use 'nvim-telescope/telescope-file-browser.nvim'
-    use 'windwp/nvim-autopairs'
-    use 'windwp/nvim-ts-autotag'
-    use 'norcalli/nvim-colorizer.lua'
-    use({
+        init = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    },
+    'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope-file-browser.nvim',
+    'windwp/nvim-autopairs',
+    'windwp/nvim-ts-autotag',
+    'norcalli/nvim-colorizer.lua',
+    {
         "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-    use 'akinsho/nvim-bufferline.lua'
-    use 'lewis6991/gitsigns.nvim'
-    use 'dinhhuy258/git.nvim'
-    use { "catppuccin/nvim", name = "catppuccin" }
-    use {
-        "mfussenegger/nvim-dap",
-    }
-    use {
-        "leoluz/nvim-dap-go",
-        dependencies = "mfussenegger/nvim-dap",
-    }
-    use {
-        "olexsmir/gopher.nvim",
-        ft = "go",
-        config = function(_, opts)
-            require("gopher").setup(opts)
-        end,
-        build = function()
-            vim.cmd [[silent! GoInstallDeps]]
-        end,
-    }
-end)
+        cmd = {
+            "MarkdownPreviewToggle",
+            "MarkdownPreview",
+            "MarkdownPreviewStop",
+        },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    'akinsho/nvim-bufferline.lua',
+    'lewis6991/gitsigns.nvim',
+    'dinhhuy258/git.nvim',
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+    },
+})

@@ -11,3 +11,6 @@ omf ${HOME}/.config/omf
 # tmux
 .tmux.conf ${HOME}/.tmux.conf
 
+# gitconfig
+.gitconfig ${HOME}/.gitconfig
+

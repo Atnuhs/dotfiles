@@ -38,6 +38,10 @@ nvim_lsp.tsserver.setup {
     -- capabilities = capabilities,
 }
 
+nvim_lsp.svelte.setup {
+    on_attach = on_attach
+}
+
 -- Lua Configuration
 
 nvim_lsp.lua_ls.setup {
@@ -80,7 +84,6 @@ nvim_lsp.gopls.setup {
                     context = { only = { 'source.organizeImports' } },
                     apply = true,
                 })
-
             end
         })
     end,
