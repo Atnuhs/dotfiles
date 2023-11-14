@@ -7,7 +7,6 @@ end
 vim.g.mapleader = " "
 
 lazy.setup({
-    'wbthomason/packer.nvim',
     'hoob3rt/lualine.nvim', -- Status line
     'nvim-lua/plenary.nvim',
     'onsails/lspkind-nvim',
@@ -17,8 +16,14 @@ lazy.setup({
     'neovim/nvim-lspconfig', -- LSP config
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
+    'nvimtools/none-ls.nvim',
     {
-        'jose-elias-alvarez/null-ls.nvim',
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            'nvimtools/none-ls.nvim',
+        },
     },
     {
         'glepnir/lspsaga.nvim',
@@ -35,7 +40,7 @@ lazy.setup({
                 }
             })
         end,
-        requires = {
+        dependencies = {
             { "nvim-tree/nvim-web-devicons" },
         }
     },

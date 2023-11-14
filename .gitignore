@@ -2,5 +2,5 @@
 /dotfiles/fish/*
 !/dotfiles/fish/config.fish
 # nvim
-/dotfiles/nvim/plugin/packer_compiled.lua
+nvim.log
 

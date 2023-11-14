@@ -6,8 +6,8 @@ fish_add_path --path --append /home/linuxbrew/.linuxbrew/sbin
 
 set -g theme_display_git_master_branch yes
 
-if type -q exa
-    alias ls 'exa --icons --git'
+if type -q eza
+    alias ls 'eza --icons --git'
     alias la "ls -a"
     alias lla "ll -a"
 end

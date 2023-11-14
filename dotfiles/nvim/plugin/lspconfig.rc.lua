@@ -77,6 +77,7 @@ nvim_lsp.gopls.setup {
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     on_attach = function(client, bufnr)
         on_attach(client, bufnr)
+        vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
         vim.api.nvim_create_autocmd('BufWritePre', {
             pattern = "*.go",
             callback = function()
@@ -91,6 +92,7 @@ nvim_lsp.gopls.setup {
         gopls = {
             completeUnimported = true,
             usePlaceholders = true,
+            buildFlags = { "-tags=large" },
             analyses = {
                 unusedparams = true,
             },
