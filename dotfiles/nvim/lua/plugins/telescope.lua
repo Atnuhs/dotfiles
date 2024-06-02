@@ -1,7 +1,11 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = {'nvim-lua/plenary.nvim'},
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons',
+
+        },
         opts = {
             defaults = {
                 file_ignore_patterns = { "node_modules/", ".git/" }
@@ -24,6 +28,10 @@ return {
             {";;", function() require("telescope.builtin").resule() end, desc = "Resume"},
             {";e", function() require("telescope.builtin").diagnostics() end, desc = "Show diagnostics"},
         },
+    },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = "make",
     },
 }
 
