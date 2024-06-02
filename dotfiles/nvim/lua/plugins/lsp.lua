@@ -39,8 +39,8 @@ return {
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					-- lua
 					"lua_ls",
-					"stylua",
 
 					-- go
 					"gopls",
