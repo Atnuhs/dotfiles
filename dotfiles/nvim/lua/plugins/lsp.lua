@@ -50,10 +50,12 @@ return {
 					"tsserver",
 
 					-- Python
-					"pylsp",
 					"ruff_lsp",
 					"ruff",
 					"pyright",
+
+					-- Ansible
+					"ansiblels",
 				},
 			})
 			require("mason-lspconfig").setup_handlers({
