@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
+		vim.keymap.set("n", "gh", "<cmd>Lspsaga finder<CR>")
 		-- vim.keymap.set("n", "gh", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
 		vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 		vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
