@@ -28,6 +28,7 @@ if type -q git
     abbr --add gca "git commit --amend"
     abbr --add gst "git status"
     abbr --add gsw "git switch"
+    abbr --add gpf "git push --force-with-lease --force-if-includes"
 end
 
 if type -q ansible
